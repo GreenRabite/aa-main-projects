@@ -20,3 +20,25 @@
 #
 # What is the value of the first triangle number to have over five hundred
 #  divisors?
+
+def triangle_num
+  tri_arr = [1]
+  num=2
+  until factors(num) > 250
+    tri_arr << tri_arr[-1] +num
+    num+=1
+  end
+  tri_arr[-1]
+end
+
+def factors(num)
+  i=1
+  count=0
+  while i <= Math.sqrt(num).round
+    count+=1 if num % i ==0
+    i+=1
+  end
+  count
+end
+
+triangle_num
