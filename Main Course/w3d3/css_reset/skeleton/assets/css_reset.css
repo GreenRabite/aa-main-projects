@@ -1,0 +1,22 @@
+html, head, title, body, header, nav, ul, li, h2, section, h1, ol, footer, p {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+body {
+  line-height: 1.5;
+}
+
+img {
+  /* max-width: 100%; */
+  /* height: : auto; */
+  width: 100%;
+}
