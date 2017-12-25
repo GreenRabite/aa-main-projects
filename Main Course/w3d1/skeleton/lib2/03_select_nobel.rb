@@ -25,7 +25,9 @@ def prizes_from_1950
   # Display Nobel prizes for 1950.
   execute(<<-SQL)
   SELECT
-    yr,subject,winner
+    yr,
+    subject,
+    winner
   FROM
     nobels
   WHERE
@@ -41,7 +43,7 @@ def literature_1962
   FROM
     nobels
   WHERE
-    subject = 'Literature' AND yr = 1962
+    yr = 1962 AND subject = 'Literature'
   SQL
 end
 
@@ -49,7 +51,8 @@ def einstein_prize
   # Show the year and subject that won 'Albert Einstein' his prize.
   execute(<<-SQL)
   SELECT
-    yr,subject
+    yr,
+    subject
   FROM
     nobels
   WHERE
@@ -74,11 +77,13 @@ def eighties_literature
   # for 1980 to 1989 inclusive.
   execute(<<-SQL)
   SELECT
-    yr,subject,winner
+    yr,
+    subject,
+    winner
   FROM
     nobels
   WHERE
-    subject = 'Literature' AND yr BETWEEN 1980 AND 1989
+    yr BETWEEN 1980 AND 1989 AND subject = 'Literature'
   SQL
 end
 
@@ -87,11 +92,13 @@ def presidential_prizes
   # 'Woodrow Wilson', 'Jimmy Carter')
   execute(<<-SQL)
   SELECT
-    yr,subject,winner
+    yr,
+    subject,
+    winner
   FROM
     nobels
   WHERE
-    winner = 'Theodore Roosevelt' OR winner = 'Woodrow Wilson' OR winner = 'Jimmy Carter'
+    winner LIKE '%ore Roosevelt%' OR winner = 'Woodrow Wilson' OR winner like '%mmy Carter%'
   SQL
 end
 

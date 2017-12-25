@@ -23,12 +23,12 @@ end
 
 def select_population_of_germany
   execute(<<-SQL)
-  SELECT
-    population
-  FROM
-    countries
-  WHERE
-    name = 'Germany'
+    SELECT
+      population
+    FROM
+      countries
+    WHERE
+      name = 'Germany';
   SQL
 end
 
@@ -37,11 +37,11 @@ def per_capita_gdp
   # the area is over 5,000,000 km^2
   execute(<<-SQL)
   SELECT
-    name, gdp/population AS gdp_per_captia
+    name, gdp/population as per_capita_gdp
   FROM
     countries
   WHERE
-    area > 5000000
+    area > 5000000;
   SQL
 end
 
@@ -54,7 +54,7 @@ def small_and_wealthy
   FROM
     countries
   WHERE
-    area < 2000 AND gdp > 5000000000
+    area < 2000 AND gdp >5000000000;
   SQL
 end
 
@@ -63,12 +63,11 @@ def scandinavia
   # 'Sweden'
   execute(<<-SQL)
   SELECT
-    name, population
+    name,population
   FROM
     countries
   WHERE
-    name = 'Denmark' OR name = 'Finland' OR name = 'Norway' OR name = 'Sweden'
-
+    name LIKE 'Denmark%' OR name LIKE 'Finland%' OR name LIKE 'Norway%' OR name LIKE 'Sweden%';
   SQL
 end
 
@@ -90,10 +89,10 @@ def just_the_right_size
   # BETWEEN allows range checking - note that it is inclusive.
   execute(<<-SQL)
   SELECT
-    name, area /1000 AS thousands_kms
+    name, (area /1000) AS square_kilometers
   FROM
     countries
   WHERE
-    area BETWEEN 200000 AND 250000
+    area BETWEEN 200000 AND 250000;
   SQL
 end
