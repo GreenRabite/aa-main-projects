@@ -24,16 +24,7 @@ require_relative './sqlzoo.rb'
 
 def example_join
   execute(<<-SQL)
-    SELECT
-      *
-    FROM
-      movies
-    JOIN
-      castings ON movies.id = castings.movie_id
-    JOIN
-      actors ON castings.actor_id = actors.id
-    WHERE
-      actors.name = 'Sean Connery'
+
   SQL
 end
 
@@ -45,11 +36,12 @@ def ford_films
   FROM
     movies
   JOIN
-    castings on movies.id = castings.movie_id
+    castings ON castings.movie_id = movies.id
   JOIN
-    actors ON castings.actor_id = actors.id
+    actors on actors.id = castings.actor_id
   WHERE
-    actors.name = 'Harrison Ford'
+    name = 'Harrison Ford'
+
   SQL
 end
 
@@ -63,11 +55,11 @@ def ford_supporting_films
   FROM
     movies
   JOIN
-    castings on movies.id = castings.movie_id
+    castings ON castings.movie_id = movies.id
   JOIN
-    actors ON castings.actor_id = actors.id
+    actors on actors.id = castings.actor_id
   WHERE
-    actors.name = 'Harrison Ford' AND castings.ord >  1
+    castings.ord > 1 AND actors.name = 'Harrison Ford'
   SQL
 end
 
@@ -79,11 +71,11 @@ def films_and_stars_from_sixty_two
   FROM
     movies
   JOIN
-    castings ON movies.id = castings.movie_id
+    castings ON castings.movie_id = movies.id
   JOIN
-    actors ON castings.actor_id = actors.id
+    actors on actors.id = castings.actor_id
   WHERE
-    castings.ord = 1 AND movies.yr = 1962
+    movies.yr = 1962 AND castings.ord = 1
   SQL
 end
 
@@ -92,13 +84,13 @@ def travoltas_busiest_years
   # number of movies he made for any year in which he made at least 2 movies.
   execute(<<-SQL)
   SELECT
-    movies.yr, COUNT(title)
+    movies.yr, COUNT(*)
   FROM
     movies
   JOIN
-    castings ON movies.id = castings.movie_id
+    castings ON castings.movie_id = movies.id
   JOIN
-    actors ON castings.actor_id = actors.id
+    actors on actors.id = castings.actor_id
   WHERE
     actors.name = 'John Travolta'
   GROUP BY
@@ -117,9 +109,9 @@ def andrews_films_and_leads
   FROM
     movies
   JOIN
-    castings on movies.id = castings.movie_id
+    castings ON castings.movie_id = movies.id
   JOIN
-    actors on castings.actor_id = actors.id
+    actors on actors.id = castings.actor_id
   WHERE
     castings.ord = 1 AND movies.title IN (
       SELECT
@@ -127,9 +119,9 @@ def andrews_films_and_leads
       FROM
         movies
       JOIN
-        castings on movies.id = castings.movie_id
+        castings ON castings.movie_id = movies.id
       JOIN
-        actors on castings.actor_id = actors.id
+        actors on actors.id = castings.actor_id
       WHERE
         actors.name = 'Julie Andrews'
     )
@@ -145,7 +137,7 @@ def prolific_actors
   FROM
     actors
   JOIN
-    castings on actors.id = castings.actor_id
+    castings ON castings.actor_id = actors.id
   WHERE
     castings.ord = 1
   GROUP BY
@@ -167,15 +159,12 @@ def films_by_cast_size
     movies
   JOIN
     castings ON castings.movie_id = movies.id
-  JOIN
-    actors on castings.actor_id = actors.id
   WHERE
     movies.yr = 1978
   GROUP BY
     movies.title
   ORDER BY
-    COUNT(*) DESC, movies.title
-
+    COUNT(*) DESC, movies.title ASC
   SQL
 end
 
@@ -188,8 +177,10 @@ def colleagues_of_garfunkel
     actors
   JOIN
     castings ON castings.actor_id = actors.id
+  JOIN
+    movies on castings.movie_id = movies.id
   WHERE
-    actors.name != 'Art Garfunkel' AND castings.movie_id IN (
+    actors.name != 'Art Garfunkel' AND movies.id IN (
       SELECT
         movies.id
       FROM
@@ -197,7 +188,7 @@ def colleagues_of_garfunkel
       JOIN
         castings ON castings.movie_id = movies.id
       JOIN
-        actors ON castings.actor_id = actors.id
+        actors ON actors.id = castings.actor_id
       WHERE
         actors.name = 'Art Garfunkel'
     )
