@@ -1,0 +1,46 @@
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 7px;
+}
+
+.left-nav > ul,
+.right-nav > ul {
+  display: flex;
+  align-items: vertical
+}
+
+.left-nav > ul > li {
+  margin: 5px;
+  font-size: 16px;
+  font-family: $serif;
+  font-weight: bold;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+.right-nav > ul > li {
+  padding: 15px
+}
+
+.right-nav > ul > li:last-of-type {
+
+}
+
+.left-nav > ul > li:hover,
+.right-nav > ul > li:last-of-type:hover {
+  background-color: $lightest-gray;
+  // background-color: pink;
+
+
+}
+
+.left-nav span {
+
+}
+
+
+.right-nav i {
+  font-size: 27px;
+  align-items: center;
+}
