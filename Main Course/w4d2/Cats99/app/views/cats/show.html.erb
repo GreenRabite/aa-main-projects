@@ -1,0 +1,14 @@
+<table>
+
+  <tr><td>Name: <%= @cat.name %></td></tr>
+  <tr><td>Age: <%= @cat.age %></td></tr>
+  <tr><td>Color: <%= @cat.color %></td></tr>
+  <tr><td>Sex: <%= @cat.sex %></td></tr>
+  <tr><td>Birthdate: <%= @cat.birth_date %></td></tr>
+  <tr><td>Description: <%= @cat.description %></td></tr>
+
+</table>
+
+<%= link_to 'Home', cats_url %>
+<br>
+<%= link_to 'Edit', edit_cat_url(@cat) %>

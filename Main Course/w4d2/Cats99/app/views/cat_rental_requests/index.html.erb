@@ -1,0 +1,13 @@
+<ul>
+  <% @requests.each do |request| %>
+  <li><%= link_to "#{request.cat.name}", cat_rental_request_url(request) %></li>
+  <br>
+  <li><%= "START DATE: #{request.start_date}"%></li>
+  <br>
+  <li><%= "END DATE: #{request.end_date}"%></li>
+  <br>
+  <li><%= "STATUS: #{request.status}"%></li>
+  <br>
+  <p>----------------------------------</p>
+  <% end %>
+</ul>
