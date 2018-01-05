@@ -1,0 +1,18 @@
+<% if request.env['PATH_INFO'] == "/users/new" %>
+  <% action_url = users_url%>
+  <% value = "Signup" %>
+  <% username = "user[user_name]"  %>
+  <% password = "user[password]" %>
+<% else %>
+  <% action_url = session_url %>
+  <% value = "Login" %>
+  <% username = "session[user_name]"  %>
+  <% password = "session[password]" %>
+<% end %>
+
+<form action="<%=action_url%>" method="POST">
+  <input name=<%= username %> value="<%user.user_name%>" type="text">
+  <input name=<%= password %> value="" type="password">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" value="<%= value %>">
+</form>

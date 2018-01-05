@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NinetyNineCats</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+    <% if current_user %>
+    <header>Hello <%=current_user.user_name%>!</header>
+      <%= button_to 'Logout',session_url, {:method => :delete} %>
+    <% else %>
+      <%= button_to 'Login',new_session_url, {:method => :get} %>
+      <%= button_to 'Signup',new_user_url, {:method => :get} %>
+    <%end%>
+
+    <% if flash[:errors] %>
+    <ul>
+        <li> <%=flash[:errors]%> </li>
+    </ul>
+    <%end%>
+    <%= yield %>
+  </body>
+</html>
