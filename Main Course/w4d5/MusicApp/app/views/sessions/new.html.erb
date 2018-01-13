@@ -1,0 +1,9 @@
+<h3>Login</h3>
+<form name="sessions" action="<%=session_url %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <label for="email-label">Email</label>
+  <input id="email-label" type="text" name="user[email]" value="">
+  <label for="password-label">Password</label>
+  <input id="password-label" type="password" name="user[password]" value="">
+  <input type="submit" value="Submit">
+</form>

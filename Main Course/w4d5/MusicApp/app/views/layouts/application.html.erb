@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MusicApp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+<header>
+  <h1>Music App</h1>
+
+  <% if logged_in? %>
+    <div class="log">Welcome <%= current_user.email %>
+      <%=button_to "Logout",session_url, method: :delete %>
+    </div>
+    <% else %>
+    <div class="log">
+      <%= button_to "Login",new_session_url, method: :get %>
+      <%= button_to "Signup",new_user_url, method: :get %>
+      <% end %>
+    </div>
+</header>
+  <body>
+    <% if flash[:errors] %>
+    <ul>
+      <% flash[:errors].each do |error| %>
+      <li>
+        <%= error  %>
+      </li>
+      <% end %>
+    </ul>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

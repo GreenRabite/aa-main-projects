@@ -1,0 +1,44 @@
+/* PHASE 4: Footer */
+.footer{
+
+  width: 900px;
+  /* background-color: green; */
+  margin: 0 auto 50px auto;
+  border-bottom: : 1px solid grey;
+  border-left: : 1px solid grey;
+  border-right: : 1px solid grey;
+  background-color: white;
+}
+
+.footer-container{
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.footer ul{
+  /* padding: 10px; */
+  min-height: 56px;
+  /* width: 900px; */
+  font-family: Arial;
+  font-size: 14px;
+  font-weight: bold;
+  color: #aaa;
+}
+
+.copyright{
+  display: flex;
+  align-items: center;
+  /* background-color: pink; */
+  width: 410px;
+}
+
+.links{
+  display: flex;
+  justify-content: space-between;
+  /* background-color: orange; */
+  /* padding: 5px; */
+  width: 250px;
+  align-items: center;
+}

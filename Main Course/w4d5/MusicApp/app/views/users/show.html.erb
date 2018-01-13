@@ -1,0 +1,9 @@
+<h1>User Profile</h1>
+<p>
+Email:<%= current_user.email %>
+</p>
+<ul>
+  <li>
+    <%= button_to "Band Page", bands_url, method: :get %>
+  </li>
+</ul>
