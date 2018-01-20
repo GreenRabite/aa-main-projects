@@ -1,0 +1,94 @@
+/* PHASE 0: Reset */
+
+html, body, header, nav, h1, a,
+ul, li, strong, main, button, i,
+section, img, div, h2, p, form,
+fieldset, label, input, textarea,
+span, article, footer, time, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  /* font: inherit; */
+  font-family: 'Montserrat', sans-serif;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+
+}
+body{
+  background-image: url("https://i.imgur.com/VG1jmqn.jpg");
+  /* background-repeat: no-repeat; */
+  background-size: cover;
+  rollIn animated infinite
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+input[type="password"],
+input[type="email"],
+input[type="text"],
+input[type="submit"],
+textarea,
+button {
+  /*
+  Get rid of native styling. Read more here:
+  http://css-tricks.com/almanac/properties/a/appearance/
+  */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+}
+.splashscreen{
+  position: fixed;
+  z-index: 0;
+  top: 0;
+  left:0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.4)
+}
+
+
+.clock {
+  display: flex;
+  justify-content: space-between;
+  width: 33%;
+  margin: 0 auto;
+  background: black;
+  color: white;
+  padding: 10px;
+  border: 1px solid black;
+  z-index: 2;
+}
+
+#old{
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-weight: 900;
+  font-size: 36px;
+  padding: 20px;
+  z-index: 3;
+}
+
+
+
+.whole-clock{
+  z-index: 5;
+}
